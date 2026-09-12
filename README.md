@@ -18,11 +18,11 @@ The primary objective of this analysis is to move beyond surface-level metrics a
 Real-world data is rarely clean. The raw acquisition channel data contained fragmented, inconsistent entries (e.g., 'referral', 'Referral ', 'ref'). 
 
 ### Before: Raw, Unstandardized Data
-![Raw Data](screenshots/01_messy_data.png)
+![Raw Data](images/01_messy_data.png)
 
 ### After: Standardized with SQL CASE WHEN
 Using a `CASE WHEN` statement, I cleaned and grouped these fragments into 5 distinct, trackable business categories to ensure accurate LTV and retention calculations.
-![Clean Data](screenshots/02_clean_data.png)
+![Clean Data](images/02_clean_data.png)
 
 ---
 
@@ -31,7 +31,7 @@ A common reporting trap is graphing a time series where "zero-sales" months simp
 
 ### Month-Over-Month Revenue Trend
 *(Generated using a recursive CTE to build a continuous calendar sequence, ensuring months with zero sales appear accurately as $0, and explicitly dropping the current incomplete month.)*
-![Revenue Trend](screenshots/03_revenue_trend.png)
+![Revenue Trend](images/03_revenue_trend.png)
 
 ---
 
@@ -39,7 +39,7 @@ A common reporting trap is graphing a time series where "zero-sales" months simp
 While tracking revenue is important, understanding *who* is leaving and *why* is where the action happens. By segmenting churn rates across different acquisition channels, a surprising risk factor emerged.
 
 ### Churn Rate by Channel
-![Churn Analysis](screenshots/05_churn_analysis.png)
+![Churn Analysis](images/05_churn_analysis.png)
 
 **Key Finding:** Customers acquired via Email campaigns exhibited an unusually high churn rate of 80%. This counter-intuitive insight suggests that our current email promotions might be attracting one-time discount hunters rather than building long-term loyalty, signaling a need to rethink our email retention strategy.
 
@@ -49,7 +49,7 @@ While tracking revenue is important, understanding *who* is leaving and *why* is
 By joining customer demographic data with their lifetime order totals (and explicitly filtering out "window shoppers"), we can see which acquisition channels bring in the most valuable long-term customers.
 
 ### LTV Findings
-![LTV by Channel](screenshots/04_ltv_results.png)
+![LTV by Channel](images/04_ltv_results.png)
 
 **Key Finding:** Referral channels drove an average LTV of $857, compared to just $299 for Social Media. This strongly indicates that future marketing spend should be reallocated to incentivize customer referrals.
 
@@ -58,4 +58,4 @@ By joining customer demographic data with their lifetime order totals (and expli
 ## Repository Structure
 * `data/`: Contains the raw dataset (Orders and Customers CSV files).
 * `sql/`: Contains the `.sql` files for each step of the analysis.
-* `screenshots/`: Visual assets for documentation.
+* `images/`: Visual assets for documentation.
